@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Content/Slick/slick.css" rel="stylesheet" />
+    <link href="~/Content/Slick/slick-theme.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <nav>
+        <div class="main_nav">
+            <div> <h1><a href="#" class="text-white">TARS</a></h1></div>
+
+            <div id="menu">
+                <img src="https://img.icons8.com/ios/50/000000/delete-sign--v3.png" width="30px" class="m-3" id="close_nav" />
+
+                <a href="/Home/Index" class="link">Home</a>
+                <a href="/Home/About">About Us</a>
+                <span class="dropdown" id="service">
+                    <div>
+                        <a >Services</a>
+                        <div class="dropdown-content">
+                            <span id="np">Normal Post</span>
+                            <span id="sp">Speed Post</span>
+                            <span id="vpp">VPP</span>
+                        </div>
+                    </div>
+                </span>
+                
+                <span class="dropdown" id="contact">
+                    <div>
+                        <a>Contact</a>
+                        <div class="dropdown-content">
+                            <span id="office">Our Offices</span>
+                            <span id="our_center">Our Centers</span>
+                        </div>
+                    </div>
+                </span>
+                <a href="/Home/Tracking">Tracking</a>
+
+
+            </div>
+
+            <div id="menu_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                     width="70" height="50"
+                     viewBox="0 0 172 172"
+                     style=" fill:#000000;">
+                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffd700"><path d="M28.66667,64.5c-6.56944,0 -12.40866,2.72158 -16.111,6.88672c-3.70234,4.16513 -5.389,9.43736 -5.389,14.61328c0,5.17592 1.68665,10.44815 5.389,14.61328c3.70234,4.16514 9.54156,6.88672 16.111,6.88672c6.56944,0 12.40866,-2.72158 16.111,-6.88672c3.70234,-4.16512 5.389,-9.43735 5.389,-14.61328c0,-5.17592 -1.68665,-10.44815 -5.389,-14.61328c-3.70234,-4.16514 -9.54156,-6.88672 -16.111,-6.88672zM86,64.5c-6.56944,0 -12.40866,2.72158 -16.111,6.88672c-3.70234,4.16513 -5.389,9.43736 -5.389,14.61328c0,5.17592 1.68665,10.44815 5.389,14.61328c3.70234,4.16514 9.54156,6.88672 16.111,6.88672c6.56944,0 12.40866,-2.72158 16.111,-6.88672c3.70234,-4.16512 5.389,-9.43735 5.389,-14.61328c0,-5.17592 -1.68665,-10.44815 -5.389,-14.61328c-3.70234,-4.16514 -9.54156,-6.88672 -16.111,-6.88672zM143.33333,64.5c-6.56944,0 -12.40866,2.72158 -16.111,6.88672c-3.70234,4.16513 -5.389,9.43736 -5.389,14.61328c0,5.17592 1.68665,10.44815 5.389,14.61328c3.70234,4.16514 9.54156,6.88672 16.111,6.88672c6.56944,0 12.40866,-2.72158 16.111,-6.88672c3.70234,-4.16512 5.389,-9.43735 5.389,-14.61328c0,-5.17592 -1.68665,-10.44815 -5.389,-14.61328c-3.70234,-4.16514 -9.54156,-6.88672 -16.111,-6.88672z"></path></g></g>
+                </svg>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+
+    <footer class="footer-section mt-5">
+        <div class="container">
+            
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-5">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <h1><a href="#" class="text-white">TARS</a></h1>
+                            </div>
+                            <div class="footer-text">
+                                <p>
+                                    Tars Courier Inc. has been in business in all over Pakistan since 2001 and is locally managed and operated subsidiary of Need it Now Courier. Tars is able to offer a combination of very personal touch to high efficiency.
+                                </p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fa fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fa fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fa fa-google-plus google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Links</h3>
+                            </div>
+                            <ul class="m-0 p-0">
+                                <li><a href="/Home/About">About</a></li>
+                                <li><a href="/Home/Tracking">Tracking</a></li>
+                                <li><a href="/Home/Center">Centers</a></li>
+                                <li><a href="/Home/Offices">Offices</a></li>
+                                <li><a href="/Home/Privacy">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fa fa-arrow-right"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>
+                                © <span id="year"></span> TARS All Rights Reserved
+
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/Slick/slick.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#menu_icon").click(function () {
+                $("#menu").addClass("show");
+                $("body").addClass("body");
+            })
+
+            $("#close_nav").click(function () {
+                $("#menu").removeClass("show");
+                $("body").removeClass("body");
+            })
+
+            $("#service").click(function () {
+                $(".dropdown-content").toggleClass("dropdown_mob");
+            })
+
+            $("#service").hover(function () {
+                $("#service a").toggleClass("actived");
+            })
+
+            $("#contact").hover(function () {
+                $("#contact a").toggleClass("actived");
+            })
+
+
+            $('#menu a').each(function () {
+                if ($(this).attr('href') == window.location.pathname) $(this).addClass('actived');
+
+                
+            })
+
+            
+
+            $("#office").click(function () {
+                window.location.href = "/Home/Offices";
+            })
+
+            $("#our_center").click(function () {
+                window.location.href = "/Home/Center";
+            })
+
+            $("#np").click(function () {
+                window.location.href = "/Home/NormalPost";
+            })
+
+            $("#sp").click(function () {
+                window.location.href = "/Home/SpeedPost";
+            })
+
+            $("#vpp").click(function () {
+                window.location.href = "/Home/VPP";
+            })
+
+            if (window.location.pathname == "/Home/Offices") {
+                $("#contact a").addClass('actived');
+            }
+
+
+            if (window.location.pathname == "/Home/Center") {
+                $("#contact a").addClass('actived');
+            }
+
+            if (window.location.pathname == "/Home/NormalPost") {
+                $("#service a").addClass('actived');
+            }
+
+            if (window.location.pathname == "/Home/SpeedPost") {
+                $("#service a").addClass('actived');
+            }
+
+            if (window.location.pathname == "/Home/VPP") {
+                $("#service a").addClass('actived');
+            }
+
+
+        })
+
+        $('.one-time').slick({
+            dots: true,
+            autoplay: true,
+            infinite: true,
+            autoplaySpeed: 3000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+        });
+
+
+        var head = $("nav");
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 60) {
+                head.addClass("navs");
+
+                // if (scroll >= 3100) {
+                //   header.removeClass("fix");
+                // }
+
+            }
+
+            else {
+                head.removeClass("navs");
+            }
+        });
+
+        //UPDATE YEAR AUTOMATICALLY
+        var today = new Date();
+        var year = today.getFullYear();
+        document.getElementById('year').innerText = year;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+﻿@model IEnumerable<TARS.Models.tbl_center>
+
+
+<style>
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
+
+
+
+<div id="center">
+    <button type="button" class="btn btn-outline-warning px-5 mb-1" data-toggle="modal" data-target="#Create">
+        Add New Center
+    </button>
+
+    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add New Center</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="City" class="form_input" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Area</label>
+                            <input type="text" id="Area" class="form_input" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="Address" class="form_input" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <input type="number" id="Pincode" class="form_input" autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="text" id="Contact" class="form_input" autocomplete="off" />
+                        </div>
+
+
+
+                        <button class="Center_btn btn btn-block text-white btn-warning" data-dismiss="modal">
+                            Add New Center
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">
+                    City
+                </th>
+                <th scope="col">
+                    Area
+                </th>
+                <th scope="col">
+                    Address
+                </th>
+                <th scope="col">
+                    Pincode
+                </th>
+                <th scope="col">
+                    Contact
+                </th>
+                <th scope="col">
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-label="City">@item.city</td>
+                    <td data-label="Area">@item.area</td>
+                    <td data-label="Address">@item.address</td>
+                    <td data-label="Pincode">@item.pincode</td>
+                    <td data-label="Contact">@item.contact</td>
+                    <td data-label="Delete">
+                        <a class="delete text-warning" data-id="@item.id">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+    </table>
+
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(".Center_btn").click(function () {
+
+        $.ajax({
+            url: "/Admin/Add_Center",
+            data: {
+                val1: $("#City").val(),
+                val2: $("#Address").val(),
+                val3: $("#Pincode").val(),
+                val4: $("#Contact").val(),
+                val5: $("#Area").val(),
+            },
+
+        })
+            .done(function (result) {
+                $('#center').html(result);
+            })
+
+
+
+    });
+
+    $("#City,#Address,#Area,#Pincode,#Contact").attr('autocomplete', 'off');
+
+
+    $(".delete").click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this data",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Admin/Delete_Center",
+                        data: {
+                            id: $(this).attr("data-id"),
+                        },
+
+                    })
+                        .done(function (result) {
+                            $('#center').html(result);
+                        })
+                }
+            });
+
+    });
+
+
+
+</script>

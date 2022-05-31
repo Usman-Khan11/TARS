@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-2 col-sm-4 bg-warning text-white">
+                @{ Html.RenderPartial("_AdminMenu"); }
+            </div>
+
+            <div class="col-md-10 col-sm-8">
+                <div class="border p-3 vh-100">
+
+                    <div class="header mb-2">
+                        <div> <h6 class="text-warning"><span id="time"></span> @Session["Admin_name"]</h6> </div>
+                        <div> <a href="/Admin/Logout" class="text-warning">Logout</a> </div>
+                    </div>
+
+                    <div id="body_container">
+                        @{ Html.RenderPartial("Home");}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+
+
+</body>
+</html>

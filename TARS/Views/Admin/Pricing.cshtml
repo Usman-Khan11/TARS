@@ -1,0 +1,145 @@
+﻿@model IEnumerable<TARS.Models.tbl_pricing>
+
+
+
+<div id="price">
+    <button type="button" class="btn btn-outline-warning px-5 mb-1" data-toggle="modal" data-target="#Create">
+        Create New
+    </button>
+
+    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Pricing</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label>From</label>
+                        <input type="text" id="City_1" class="form_input" autocomplete="off"  />
+                    </div>
+
+                    <div class="form-group">
+                        <label>To</label>
+                        <input type="text" id="City_2" class="form_input" autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="Price" class="form_input" autocomplete="off" />
+                    </div>
+
+
+
+                    
+
+                    <button class="Add_btn btn btn-block btn-dark" data-dismiss="modal">
+                        Add Pricing
+                    </button>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City_1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City_2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <a class="delete text-warning pointer-event" data-id="@item.id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(".Add_btn").click(function () {
+
+        $.ajax({
+            url: "/Admin/Create_Pricing",
+            data: {
+                val1: $("#City_1").val(),
+                val2: $("#City_2").val(),
+                val3: $("#Price").val(),
+            },
+
+        })
+            .done(function (result) {
+                $('#price').html(result);
+            })
+
+
+
+    });
+
+
+ 
+
+    $(".delete").click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this data",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Admin/Delete_Pricing",
+                        data: {
+                            id: $(this).attr("data-id"),
+                        },
+
+                    })
+                        .done(function (result) {
+                            $('#price').html(result);
+                        })
+                }
+            });
+
+    });
+
+
+</script>

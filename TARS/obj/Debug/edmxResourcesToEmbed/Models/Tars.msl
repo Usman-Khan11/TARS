@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TARSModelStoreContainer" CdmEntityContainer="TARSEntities">
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="TARSModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="a_id" ColumnName="a_id" />
+          <ScalarProperty Name="a_name" ColumnName="a_name" />
+          <ScalarProperty Name="a_email" ColumnName="a_email" />
+          <ScalarProperty Name="a_password" ColumnName="a_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_customer">
+      <EntityTypeMapping TypeName="TARSModel.tbl_customer">
+        <MappingFragment StoreEntitySet="tbl_customer">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="e_id" ColumnName="e_id" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="delivery" ColumnName="delivery" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+          <ScalarProperty Name="c_address" ColumnName="c_address" />
+          <ScalarProperty Name="c_contact" ColumnName="c_contact" />
+          <ScalarProperty Name="c_city" ColumnName="c_city" />
+          <ScalarProperty Name="c_postalcode" ColumnName="c_postalcode" />
+          <ScalarProperty Name="c_CNIC" ColumnName="c_CNIC" />
+          <ScalarProperty Name="r_name" ColumnName="r_name" />
+          <ScalarProperty Name="r_address" ColumnName="r_address" />
+          <ScalarProperty Name="r_contact" ColumnName="r_contact" />
+          <ScalarProperty Name="r_city" ColumnName="r_city" />
+          <ScalarProperty Name="r_postalcode" ColumnName="r_postalcode" />
+          <ScalarProperty Name="r_CNIC" ColumnName="r_CNIC" />
+          <ScalarProperty Name="item_weight" ColumnName="item_weight" />
+          <ScalarProperty Name="services" ColumnName="services" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_employee">
+      <EntityTypeMapping TypeName="TARSModel.tbl_employee">
+        <MappingFragment StoreEntitySet="tbl_employee">
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="e_id" ColumnName="e_id" />
+          <ScalarProperty Name="e_name" ColumnName="e_name" />
+          <ScalarProperty Name="e_email" ColumnName="e_email" />
+          <ScalarProperty Name="e_password" ColumnName="e_password" />
+          <ScalarProperty Name="e_address" ColumnName="e_address" />
+          <ScalarProperty Name="e_contact" ColumnName="e_contact" />
+          <ScalarProperty Name="e_picture" ColumnName="e_picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_pricing">
+      <EntityTypeMapping TypeName="TARSModel.tbl_pricing">
+        <MappingFragment StoreEntitySet="tbl_pricing">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="City_2" ColumnName="City_2" />
+          <ScalarProperty Name="City_1" ColumnName="City_1" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_center">
+      <EntityTypeMapping TypeName="TARSModel.tbl_center">
+        <MappingFragment StoreEntitySet="tbl_center">
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

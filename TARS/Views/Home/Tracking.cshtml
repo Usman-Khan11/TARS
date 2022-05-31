@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TARS.Models.tbl_customer>
+@{
+    ViewBag.Title = "Tracking";
+}
+
+
+<h2 class="font-weight-bold display-4 text-center mt-5">Track Your <span style="color: gold">Parcels</span></h2>
+
+<div class="w-100 d-flex m-auto pt-5 container">
+    <input type="number" min="0" class="form_input" id="track_value" placeholder="Emter Your Parcel Id" />
+    <button id="track_btn" class="px-5 btn-dark">Track</button>
+
+</div>
+
+
+
+<div class="container mt-4">
+
+    @if (Model != null)
+    {
+        
+        <div class="d-flex justify-content-center align-items-center">
+            <div>
+                @foreach (var item in Model)
+                {
+                    <h3 class="font-weight-bold mt-3 mb-3">Details:-</h3>
+                    <h6><strong>Parcel Id:</strong> @item.c_id</h6>
+                    <h6><strong>Custumer Name:</strong> @item.c_name</h6>
+                    <h6><strong>Receiver Name:</strong> @item.r_name</h6>
+                    <h6><strong>Placed on:</strong> @item.date</h6>
+                    <h6><strong>Service:</strong> @item.services</h6>
+                    <h6>
+                        <strong>Amount:</strong>
+                        @if (item.services == "VPP")
+                        {
+                            <span>Rs @item.total /-</span> <span> (Paid By Receiver)</span>
+                        }
+                        else
+                        {
+                            <span>Rs @item.total /-</span>
+                        }
+                    </h6>
+                    <h6><strong>Status:</strong> @item.status</h6>
+                }
+            </div>
+
+        </div>
+
+    }
+    else
+    {
+        <p>Id Not Found</p>
+    }
+
+
+
+
+<div class="mt-5">
+    <p class="mt-5 mb-5 w-75 m-auto text-justify">
+        TARS Tracking helps you trace the status of your parcels. Easily track your parcels online in just one click. Simply enter your parcel Id and click on the Track Button. Our tracking is fast, simple and convenient. You can track your parcels easily from anywhere from any device. TARS Tracking is available round the clock with a simple and easy user interface. TARS tracking provides you with the most convenient way to track your parcel. TARS tracking helps you to easily access the tracking system. Just enter your Parcel Id to track the parcels. By TARS tracking system, you can locate your parcel at each transit point until delivering the parcel.
+    </p>
+</div>
+
+</div>
+
+

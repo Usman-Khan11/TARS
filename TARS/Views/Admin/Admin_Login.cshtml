@@ -1,0 +1,46 @@
+﻿@model TARS.Models.tbl_admin
+
+@{
+    ViewBag.Title = "Admin_Login";
+    Layout = null;
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+
+<div class="admin_login_body">
+
+
+    <div class="container-shadow"></div>
+    <div class="container_login">
+        <div class="login_wrap">
+            <div class="headings">
+                <a id="sign-in" class="active"><span>Admin LogIn</span></a>
+            </div>
+            <div id="sign-in-form">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.LabelFor(model => model.a_email, htmlAttributes: new { @class = "control-labe" })
+                    @Html.EditorFor(model => model.a_email, new { htmlAttributes = new { @class = "form-contro", autocomplete = "off" } })
+
+                    @Html.LabelFor(model => model.a_password, htmlAttributes: new { @class = "control-labe" })
+                    @Html.PasswordFor(model => model.a_password, new { @class = "form-contro" })
+
+                   
+                    <input type="submit" class="button" name="submit" value="Login" />
+                }
+
+                <a href="/Employee/Emp_Login" class="text-white">Login as Employee</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

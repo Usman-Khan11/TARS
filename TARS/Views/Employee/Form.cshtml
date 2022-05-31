@@ -1,0 +1,298 @@
+﻿@using TARS.Models;
+@model TARS.Models.tbl_customer
+
+@{
+    ViewBag.Title = "Form";
+    Layout = null;
+}
+@Html.Raw(TempData["msg"])
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+
+<style>
+    .emp_dropdown-content {
+        position: absolute;
+        display: none;
+    }
+
+    .emp_dropdown .emp_dropdown-content a {
+        display: block;
+        padding: 15px;
+        font-weight: 800;
+        color: white !important;
+    }
+
+        .emp_dropdown .emp_dropdown-content a:hover {
+            background-color: white;
+            color: black !important;
+        }
+
+    .emp_dropdown-content {
+        background-color: dodgerblue;
+        margin-top: 12px;
+        width: 150px;
+        right: 40px;
+        transition: all .5s ease !important;
+    }
+
+    #menu {
+        cursor: pointer;
+    }
+</style>
+
+
+<div class="w-100 p-3 shadow border border-dark bg-dark text-white">
+    <div class="d-flex align-items-center justify-content-between container">
+        <div>
+            <strong>Rs <span class="to">0</span>/-</strong>
+            <span class="err"></span>
+        </div>
+
+        <div>
+            @{
+                HttpCookie emp_id = Request.Cookies["Emp_Id"];
+                int id = Convert.ToInt32(emp_id["Id"]);
+                <span class=" emp_dropdown">
+                    <div>
+                        <a class="dropdown-toggle" id="menu">Menu</a>
+                        <div class="emp_dropdown-content">
+                            <a href="/Employee/Emp_Profile/@id">Profile</a>
+                            <a href="/Employee/Record">Record</a>
+                            <a href="/Employee/Logout">Logout</a>
+                        </div>
+                    </div>
+                </span>
+            }
+
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center mt-5 mb-5 font-weight-bold text-warning">Customers Enteries</h1>
+
+
+
+
+
+<section>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="container">
+            <div class="">
+
+
+
+
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Customers Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recievers Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Other Info</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="col-md-12 p-2 mt-3">
+                            <div>
+                                <div class="mb-4">
+                                    @Html.LabelFor(model => model.c_name, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.c_name, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.c_name, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        @Html.LabelFor(model => model.c_contact, htmlAttributes: new { @class = "form_label" })
+                                        @Html.EditorFor(model => model.c_contact, new { htmlAttributes = new { @class = "form_input" } })
+                                        @Html.ValidationMessageFor(model => model.c_contact, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        @Html.LabelFor(model => model.c_city, htmlAttributes: new { @class = "form_label" })
+                                        @Html.EditorFor(model => model.c_city, new { htmlAttributes = new { @class = "form_input" } })
+                                        @Html.ValidationMessageFor(model => model.c_city, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+                                    @Html.LabelFor(model => model.c_address, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.c_address, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.c_address, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        @Html.LabelFor(model => model.c_CNIC, htmlAttributes: new { @class = "form_label" })
+                                        @Html.EditorFor(model => model.c_CNIC, new { htmlAttributes = new { @class = "form_input" } })
+                                        @Html.ValidationMessageFor(model => model.c_CNIC, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        @Html.LabelFor(model => model.c_postalcode, htmlAttributes: new { @class = "form_label" })
+                                        @Html.EditorFor(model => model.c_postalcode, new { htmlAttributes = new { @class = "form_input" } })
+                                        @Html.ValidationMessageFor(model => model.c_postalcode, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div class="col-md-12 p-2 mt-3">
+
+                            <div class="mb-4">
+                                @Html.LabelFor(model => model.r_name, htmlAttributes: new { @class = "form_label" })
+                                @Html.EditorFor(model => model.r_name, new { htmlAttributes = new { @class = "form_input" } })
+                                @Html.ValidationMessageFor(model => model.r_name, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(model => model.r_contact, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.r_contact, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.r_contact, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(model => model.r_city, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.r_city, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.r_city, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+
+                            <div class="mb-4">
+                                @Html.LabelFor(model => model.r_address, htmlAttributes: new { @class = "form_label" })
+                                @Html.EditorFor(model => model.r_address, new { htmlAttributes = new { @class = "form_input" } })
+                                @Html.ValidationMessageFor(model => model.r_address, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(model => model.r_CNIC, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.r_CNIC, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.r_CNIC, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(model => model.r_postalcode, htmlAttributes: new { @class = "form_label" })
+                                    @Html.EditorFor(model => model.r_postalcode, new { htmlAttributes = new { @class = "form_input" } })
+                                    @Html.ValidationMessageFor(model => model.r_postalcode, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                        <div class="row mb-5 mt- p-2 mt-3">
+
+                            <div class="col">
+                                @Html.LabelFor(model => model.item_weight, htmlAttributes: new { @class = "form_label" })
+                                @Html.EditorFor(model => model.item_weight, new { htmlAttributes = new { @class = "form_input" } })
+                                @Html.ValidationMessageFor(model => model.item_weight, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col">
+                                @Html.LabelFor(model => model.services, htmlAttributes: new { @class = "form_label" })
+                                @Html.DropDownListFor(model => model.services, new SelectList(new[] { "Select", "Speed Post", "Normal Post", "VPP" }), new { @class = "form_input" })
+                                @Html.ValidationMessageFor(model => model.services, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col">
+                                @Html.LabelFor(model => model.delivery, htmlAttributes: new { @class = "form_label" })
+                                @Html.DropDownListFor(model => model.delivery, new SelectList(new[] { "Select", "1 day", "2 days", "3 days", "4 days", "5 days", "6 days", "1 week" }), new { @class = "form_input" })
+                                @Html.ValidationMessageFor(model => model.delivery, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="">
+                                <input type="submit" value="Enter Custumer Data" class="btn btn-block btn-warning text-white" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    }
+</section>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/"></script>
+<script src="~/Scripts/popper.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#services").change(function () {
+
+
+            $.ajax({
+                url: "/Employee/Find",
+                data: {
+                    c1: $("#c_city").val(),
+                    c2: $("#r_city").val(),
+                    c3: $("#item_weight").val(),
+                    c4: $("#services option:selected").val(),
+                },
+
+            })
+                .done(function (result) {
+                    if (result == "Delivery Not Available" || result == "Error") {
+                        $('.err').html(result);
+                    }
+                    else {
+                        $('.to').html(result);
+                    }
+
+                })
+
+
+
+        })
+
+        $("#menu").click(function () {
+
+            $(".emp_dropdown-content").toggle()
+        })
+
+
+
+
+    })
+</script>

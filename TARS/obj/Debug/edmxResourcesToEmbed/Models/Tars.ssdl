@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TARSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="a_id" />
+    </Key>
+    <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="a_name" Type="varchar" MaxLength="15" />
+    <Property Name="a_email" Type="varchar" MaxLength="50" />
+    <Property Name="a_password" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="tbl_center">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="25" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="pincode" Type="int" />
+    <Property Name="contact" Type="varchar" MaxLength="15" />
+    <Property Name="area" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_customer">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_name" Type="varchar" MaxLength="15" />
+    <Property Name="c_address" Type="varchar" MaxLength="50" />
+    <Property Name="c_contact" Type="varchar" MaxLength="13" />
+    <Property Name="c_city" Type="varchar" MaxLength="20" />
+    <Property Name="c_postalcode" Type="int" />
+    <Property Name="c_CNIC" Type="varchar" MaxLength="15" />
+    <Property Name="r_name" Type="varchar" MaxLength="15" />
+    <Property Name="r_address" Type="varchar" MaxLength="50" />
+    <Property Name="r_contact" Type="varchar" MaxLength="13" />
+    <Property Name="r_city" Type="varchar" MaxLength="20" />
+    <Property Name="r_postalcode" Type="int" />
+    <Property Name="r_CNIC" Type="varchar" MaxLength="15" />
+    <Property Name="item_weight" Type="int" />
+    <Property Name="services" Type="varchar" MaxLength="30" />
+    <Property Name="date" Type="datetime2" Precision="7" />
+    <Property Name="delivery" Type="varchar" MaxLength="30" />
+    <Property Name="total" Type="int" />
+    <Property Name="e_id" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_employee">
+    <Key>
+      <PropertyRef Name="e_id" />
+    </Key>
+    <Property Name="e_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="e_name" Type="varchar" MaxLength="15" />
+    <Property Name="e_email" Type="varchar" MaxLength="50" />
+    <Property Name="e_password" Type="varchar" MaxLength="16" />
+    <Property Name="e_address" Type="varchar" MaxLength="50" />
+    <Property Name="e_contact" Type="varchar" MaxLength="13" />
+    <Property Name="e_picture" Type="varchar(max)" />
+    <Property Name="city" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_pricing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_1" Type="varchar" MaxLength="30" />
+    <Property Name="City_2" Type="varchar" MaxLength="30" />
+    <Property Name="Price" Type="int" />
+  </EntityType>
+  <EntityContainer Name="TARSModelStoreContainer">
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_center" EntityType="Self.tbl_center" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_pricing" EntityType="Self.tbl_pricing" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

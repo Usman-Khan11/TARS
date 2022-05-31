@@ -1,0 +1,228 @@
+﻿@model IEnumerable<TARS.Models.tbl_customer>
+
+
+
+
+
+
+<style>
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+
+        table td {
+            font-size: .9em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .8em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+    @@media screen and (max-width: 600px) {
+        table {
+            border: 0;
+        }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+                table td::before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                table td:last-child {
+                    border-bottom: 0;
+                }
+    }
+
+
+
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid gold;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+        outline: none;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: gold;
+        color: white;
+        font-size: 17px;
+        border: 1px solid gold;
+        outline: none;
+        border-left: none;
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #fff;
+            color: gold;
+        }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+
+    .delete {
+        cursor: pointer;
+    }
+</style>
+
+<div>
+
+
+
+    
+
+    <table class="container-md">
+
+        <thead>
+            <tr>
+                <th scope="col">Parcel Id</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Receiver Name</th>
+                <th scope="col">Service</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody id="tt">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+                <td scope="row" data-label="Parcel Id">@Html.DisplayFor(modelItem => item.c_id)</td>
+                <td data-label="Customer Name">@Html.DisplayFor(modelItem => item.c_name)</td>
+                <td data-label="Receiver Name">@Html.DisplayFor(modelItem => item.r_name)</td>
+                <td data-label="Services">@Html.DisplayFor(modelItem => item.services)</td>
+                <td data-label="Amount">Rs @Html.DisplayFor(modelItem => item.total)/-</td>
+                <td>
+                    <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#A_@item.c_id">
+                        View
+                    </button>
+                </td>
+
+                <div class="modal fade" id="A_@item.c_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Parcels Info</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <p class="mb-3">Placed On: <span>@item.date</span></p>
+
+                                <p class="mb-3">Delivery: <span>@item.delivery</span></p>
+
+
+                                <p class="mb-3">From: <span>@item.c_city</span></p>
+                                <p class="mb-3">To: <span>@item.r_city</span></p>
+
+                                <p class="mb-3">Customer Address: <span>@item.c_address</span></p>
+                                <p class="mb-3">Receiver Address: <span>@item.r_address</span></p>
+
+                                @if (item.item_weight != null)
+                                {
+                                    <p class="mb-3">Weight: <span>@item.item_weight Kg</span></p>
+                                }
+                                else
+                                {
+                                    <p class="mb-3">Weight: <span>N/A</span></p>
+                                }
+
+
+                                <p class="mb-3">Added By (Employee Id): <span>@item.e_id</span></p>
+
+                                <p class="mb-3">Status: <span>@item.status</span></p>
+
+                                <p class="mb-3">Amount: Rs <span>@item.total</span>/-</p>
+
+
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+            </tr>
+
+
+
+                }
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

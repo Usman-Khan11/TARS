@@ -1,0 +1,263 @@
+﻿@model IEnumerable<TARS.Models.tbl_employee>
+
+<style>
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+        
+    }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+       
+
+        table td {
+            font-size: .9em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .8em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+    @@media screen and (max-width: 600px) {
+        table {
+            border: 0;
+        }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+                table td::before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                table td:last-child {
+                    border-bottom: 0;
+                }
+    }
+
+
+
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid gold;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+        outline: none;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: gold;
+        color: white;
+        font-size: 17px;
+        border: 1px solid gold;
+        outline: none;
+        border-left: none;
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #fff;
+            color: gold;
+        }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+
+    .delete{
+        cursor: pointer;
+    }
+</style>
+
+<div id="emp">
+
+    
+
+<form class="example">
+    <input type="text" placeholder="Search.." id="searchTxt" autocomplete="off">
+    <button type="button" id="searchbtn"><i class="fa fa-search"></i></button>
+</form>
+
+<table class="container-md" >
+    
+    <thead>
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Employee Contact</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody id="tt">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+        <tr>
+            <td scope="row" data-label="Employee Id">@Html.DisplayFor(modelItem => item.e_id)</td>
+            <td data-label="Employee Name">@Html.DisplayFor(modelItem => item.e_name)</td>
+            <td data-label="City">@Html.DisplayFor(modelItem => item.city)</td>
+            <td data-label="Employee Contact">@Html.DisplayFor(modelItem => item.e_contact)</td>
+            @*<td data-label="Delete"><i class="fa fa-trash-o text-warning delete" data-id="@item.e_id"></i></td>*@
+            <td>
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#A_@item.e_id">
+                    More Info
+                </button>
+            </td>
+
+            <div class="modal fade" id="A_@item.e_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Employee Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="@Url.Content(item.e_picture)" width="80" height="80px" class="mb-2 rounded-circle" />
+                            <h6 class="mb-3">Name: <span>@item.e_name</span></h6>
+
+                            <h6 class="mb-3">Email: <span>@item.e_email</span></h6>
+
+
+                            <h6 class="mb-3">Contact: <span>@item.e_contact</span></h6>
+
+                            <h6 class="mb-3">Address: <span>@item.e_address</span></h6>
+
+                            <h6 class="mb-3">City: <span>@item.city</span></h6>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <i class="fa fa-trash-o text-warning delete" data-id="@item.e_id" data-dismiss="modal"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </tr>
+
+                
+
+            }
+        }
+
+
+
+    </tbody>
+</table>
+    </div>
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+   $("#searchbtn").click(function () {
+        var searchTxt = $("#searchTxt").val();
+        
+
+        $.ajax({
+            url: "/Admin/Our_Employee",
+            data: {
+                search: searchTxt
+            },
+            
+        })
+        .done(function (result) {
+            $('#emp').html(result);
+        })
+
+   });
+
+    
+
+
+    $(".delete").click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this data",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/Admin/Delete_Employee",
+                        data: {
+                            id: $(this).attr("data-id"),
+                        },
+
+                    })
+                        .done(function (result) {
+                            $('#emp').html(result);
+                        })
+                }
+            });
+
+    });
+
+
+
+    
+</script>

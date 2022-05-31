@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TARS.Models.tbl_center>
+
+@{
+    ViewBag.Title = "Center";
+}
+
+<h2 class="font-weight-bold display-4 text-center mt-5">Search <span style="color: gold">Centers</span></h2>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form_input" id="city_value" placeholder="Emter City" />
+        </div>
+        <div class="col">
+            <input type="text" class="form_input" id="area_value" placeholder="Emter Area" />
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button id="centerbtn" class="w-25 m-auto py-2 btn-dark">Search</button>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <div>
+        @if (Model != null)
+        {
+
+            <h3 class="font-weight-bold mt-3 mb-4">Our Centers:-</h3>
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+
+
+                    <div class="col-md-6">
+                        <div class="p-3 border shadow mb-5 con-inner">
+                            <div><i class="fa fa-map-marker fa-3x mb-3 text-warning"></i></div>
+                            <div>
+                                <h5 class="font-weight-bold">@item.city</h5>
+                                <p>@item.address</p>
+
+                                <div>
+                                    <p>
+                                        <strong>Contact:</strong>
+                                        <a href="tel: @item.contact">@item.contact</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+
+
+        }
+        else
+        {
+            <p>Search Center according to your location</p>
+        }
+
+        <p>@TempData["Err"]</p>
+
+    </div>
+</div>

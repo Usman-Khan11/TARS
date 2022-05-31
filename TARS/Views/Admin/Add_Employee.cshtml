@@ -1,0 +1,70 @@
+﻿@model TARS.Models.tbl_employee
+
+
+
+<h2 class="mt-5 mb-2 text-warning text-center">Add New Employee</h2>
+
+<div class="text-center">
+    <img src="~/Content/images/man.png" id="text" width="100" height="100px" class="mt-3 mb-3 rounded-circle" />
+</div>
+
+@using (Html.BeginForm("Add_Employee", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row mb-5 mt-5">
+        <div class="col">
+            @Html.LabelFor(model => model.e_name, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.e_name, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.e_name, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.e_email, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.e_email, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.e_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5 mt-3">
+        <div class="col">
+            @Html.LabelFor(model => model.e_password, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.e_password, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.e_password, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.e_contact, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.e_contact, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.e_contact, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="row mb-5 mt-3">
+        <div class="col">
+            @Html.LabelFor(model => model.e_address, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.e_address, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.e_address, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "form_label" })
+            @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form_input" } })
+            @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mb-3 form-group">
+        <div>
+
+            <label for="file" class="form-label">Employee Picture</label>
+            <input class="form-control" name="ImageFile" type="file" id="file" onchange="PreviewImage()" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Add Employee" class="btn btn-warning py-3 text-white btn-block" />
+        </div>
+    </div>
+}
+

@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TARSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_name" Type="varchar" MaxLength="15" />
+          <Property Name="a_email" Type="varchar" MaxLength="50" />
+          <Property Name="a_password" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="tbl_center">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="25" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="pincode" Type="int" />
+          <Property Name="contact" Type="varchar" MaxLength="15" />
+          <Property Name="area" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_name" Type="varchar" MaxLength="15" />
+          <Property Name="c_address" Type="varchar" MaxLength="50" />
+          <Property Name="c_contact" Type="varchar" MaxLength="13" />
+          <Property Name="c_city" Type="varchar" MaxLength="20" />
+          <Property Name="c_postalcode" Type="int" />
+          <Property Name="c_CNIC" Type="varchar" MaxLength="15" />
+          <Property Name="r_name" Type="varchar" MaxLength="15" />
+          <Property Name="r_address" Type="varchar" MaxLength="50" />
+          <Property Name="r_contact" Type="varchar" MaxLength="13" />
+          <Property Name="r_city" Type="varchar" MaxLength="20" />
+          <Property Name="r_postalcode" Type="int" />
+          <Property Name="r_CNIC" Type="varchar" MaxLength="15" />
+          <Property Name="item_weight" Type="int" />
+          <Property Name="services" Type="varchar" MaxLength="30" />
+          <Property Name="date" Type="datetime2" Precision="7" />
+          <Property Name="delivery" Type="varchar" MaxLength="30" />
+          <Property Name="total" Type="int" />
+          <Property Name="e_id" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_employee">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="e_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="e_name" Type="varchar" MaxLength="15" />
+          <Property Name="e_email" Type="varchar" MaxLength="50" />
+          <Property Name="e_password" Type="varchar" MaxLength="16" />
+          <Property Name="e_address" Type="varchar" MaxLength="50" />
+          <Property Name="e_contact" Type="varchar" MaxLength="13" />
+          <Property Name="e_picture" Type="varchar(max)" />
+          <Property Name="city" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_pricing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_1" Type="varchar" MaxLength="30" />
+          <Property Name="City_2" Type="varchar" MaxLength="30" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityContainer Name="TARSModelStoreContainer">
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_center" EntityType="Self.tbl_center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_pricing" EntityType="Self.tbl_pricing" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TARSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="a_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="a_password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_customer">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="c_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="c_contact" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="c_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="c_postalcode" Type="Int32" />
+          <Property Name="c_CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="r_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="r_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="r_contact" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="r_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="r_postalcode" Type="Int32" />
+          <Property Name="r_CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="item_weight" Type="Int32" />
+          <Property Name="services" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="7" />
+          <Property Name="delivery" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="e_id" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_employee">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="e_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="e_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="e_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="e_password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="e_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="e_contact" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="e_picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="TARSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
+          <EntitySet Name="tbl_customer" EntityType="Self.tbl_customer" />
+          <EntitySet Name="tbl_employee" EntityType="Self.tbl_employee" />
+          <EntitySet Name="tbl_pricing" EntityType="TARSModel.tbl_pricing" />
+          <EntitySet Name="tbl_center" EntityType="TARSModel.tbl_center" />
+        </EntityContainer>
+        <EntityType Name="tbl_pricing">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="City_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_center">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="Int32" />
+          <Property Name="contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="area" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TARSModelStoreContainer" CdmEntityContainer="TARSEntities">
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="TARSModel.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="a_name" ColumnName="a_name" />
+                <ScalarProperty Name="a_email" ColumnName="a_email" />
+                <ScalarProperty Name="a_password" ColumnName="a_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_customer">
+            <EntityTypeMapping TypeName="TARSModel.tbl_customer">
+              <MappingFragment StoreEntitySet="tbl_customer">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="delivery" ColumnName="delivery" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_address" ColumnName="c_address" />
+                <ScalarProperty Name="c_contact" ColumnName="c_contact" />
+                <ScalarProperty Name="c_city" ColumnName="c_city" />
+                <ScalarProperty Name="c_postalcode" ColumnName="c_postalcode" />
+                <ScalarProperty Name="c_CNIC" ColumnName="c_CNIC" />
+                <ScalarProperty Name="r_name" ColumnName="r_name" />
+                <ScalarProperty Name="r_address" ColumnName="r_address" />
+                <ScalarProperty Name="r_contact" ColumnName="r_contact" />
+                <ScalarProperty Name="r_city" ColumnName="r_city" />
+                <ScalarProperty Name="r_postalcode" ColumnName="r_postalcode" />
+                <ScalarProperty Name="r_CNIC" ColumnName="r_CNIC" />
+                <ScalarProperty Name="item_weight" ColumnName="item_weight" />
+                <ScalarProperty Name="services" ColumnName="services" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_employee">
+            <EntityTypeMapping TypeName="TARSModel.tbl_employee">
+              <MappingFragment StoreEntitySet="tbl_employee">
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+                <ScalarProperty Name="e_name" ColumnName="e_name" />
+                <ScalarProperty Name="e_email" ColumnName="e_email" />
+                <ScalarProperty Name="e_password" ColumnName="e_password" />
+                <ScalarProperty Name="e_address" ColumnName="e_address" />
+                <ScalarProperty Name="e_contact" ColumnName="e_contact" />
+                <ScalarProperty Name="e_picture" ColumnName="e_picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_pricing">
+            <EntityTypeMapping TypeName="TARSModel.tbl_pricing">
+              <MappingFragment StoreEntitySet="tbl_pricing">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="City_2" ColumnName="City_2" />
+                <ScalarProperty Name="City_1" ColumnName="City_1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_center">
+            <EntityTypeMapping TypeName="TARSModel.tbl_center">
+              <MappingFragment StoreEntitySet="tbl_center">
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
